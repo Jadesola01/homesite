@@ -4,7 +4,7 @@
 		IconChevronRight,
 		IconCircleArrowRight,
 		ShopifyLogo
-	} from 'src/lib/assets/vectors';
+	} from '$lib/assets/vectors';
 	import AboutUsContents from './about-us.content';
 	import './about-us.scss';
 

@@ -10,7 +10,7 @@
 				@apply h-screen overflow-hidden lg:h-auto lg:overflow-auto;
 			}
 			.responsive-wrapper {
-				@apply w-full max-w-7xl mx-auto;
+				@apply w-full sm:max-w-[88.88889%] 2xl:max-w-7xl mx-auto;
 				.section-heading {
 					@apply text-xl font-bold leading-[1.25] md:text-5xl;
 				}
