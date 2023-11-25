@@ -2,18 +2,18 @@
 	&__container {
 		@apply pt-8 lg:pt-[120px] pb-10 lg:pb-[72px] lg:pl-10;
 		.section__header {
-			@apply text-gray-6 text-center lg:text-left mb-3 lg:mb-[23px] w-[64%] lg:w-[38.98438%] lg:mx-0 mx-auto;
+			@apply text-gray-6 text-center sm:text-left mb-3 lg:mb-[23px] w-[64%] sm:w-[38%] xl:w-[38.98438%] sm:mx-0 mx-auto;
 			h1 {
-				@apply text-2xl font-medium text-gray-2 leading-tight lg:text-[40px] mb-2 lg:mb-[9px];
+				@apply text-2xl sm:text-[32px] font-medium text-gray-2 leading-tight xl:text-[40px] mb-2 xl:mb-[9px];
 			}
 			p {
-				@apply font-light text-sm leading-snug lg:text-xl lg:leading-snug;
+				@apply font-light text-sm sm:text-lg sm:leading-snug leading-snug xl:text-xl xl:leading-snug;
 			}
 		}
 		.section__socials {
-			@apply flex items-center justify-center gap-4 text-gray-6 lg:justify-start;
+			@apply flex items-center justify-center gap-4 text-gray-6 sm:justify-start;
 			.social-link {
-				@apply w-[18px] lg:w-6;
+				@apply w-[18px] sm:w-[22px] lg:w-6;
 			}
 		}
 	}
@@ -21,11 +21,11 @@
 .contact-us__form-section {
 	@apply bg-white-1 text-gray-6;
 	&__container {
-		@apply lg:pb-[112px] lg:flex justify-between;
+		@apply sm:pb-14 lg:pb-28 sm:flex justify-between;
 		& > div:first-child {
-			@apply pt-8 pb-6 lg:py-0 lg:ml-[39px] lg:mt-[88px] lg:mb-[120px] shrink-0 lg:w-[27.7343758%];
+			@apply pt-8 pb-6 lg:py-0 lg:ml-[39px] lg:mt-[88px] lg:mb-[120px] sm:w-5/12 lg:w-[27.7343758%];
 			.section__header {
-				@apply text-center lg:text-left lg:mr-12 mb-6 lg:mb-14;
+				@apply text-center sm:text-left lg:mr-12 mb-6 lg:mb-14 sm:w-4/5;
 				h2 {
 					@apply text-2xl leading-tight text-gray-2 font-medium xl:text-[44px] lg:leading-tight mb-1 lg:mb-[9px];
 				}
@@ -34,7 +34,7 @@
 				}
 			}
 			.section__steps {
-				@apply mx-[31px] md:mx-0 flex gap-[9px] md:gap-[15px] xl:gap-[21px] items-start justify-start;
+				@apply mx-[31px] sm:mx-0 flex gap-[9px] md:gap-[15px] xl:gap-[21px];
 				&__indicators {
 					.step-indicator {
 						@apply w-[18px] md:w-6 xl:w-[30px];
@@ -49,7 +49,7 @@
 					}
 				}
 				&__descriptions {
-					@apply flex flex-col items-stretch gap-6;
+					@apply sm:w-3/4 lg:w-auto flex flex-col items-stretch gap-6;
 					.step {
 						&__title {
 							@apply text-gray-2 xl:text-xl xl:leading-tight mb-[6px] text-base md:text-lg md:leading-tight font-medium leading-tight;
@@ -62,10 +62,10 @@
 			}
 		}
 		&__form-wrapper {
-			@apply relative pt-8 lg:pt-0 pb-6 lg:mb-[42.5px] bg-white shrink-0 lg:w-[54.6875%];
+			@apply relative pt-8 lg:pt-0 pb-6 lg:mb-[42.5px] bg-white shrink-0 sm:w-1/2 md:w-7/12 xl:w-[54.6875%];
 			.form-wrapper__content {
 				&__header {
-					@apply lg:absolute lg:-translate-y-full flex gap-3 items-center lg:px-8 py-6 lg:py-[18px] px-4 bg-white-1 rounded-lg mx-3 lg:mx-0 lg:gap-6;
+					@apply sm:absolute sm:-translate-y-full flex gap-3 items-center lg:px-8 py-6 lg:py-[18px] px-4 bg-white-1 rounded-lg mx-3 sm:mx-0 lg:gap-6;
 					.icon-wrapper {
 						@apply w-8 md:w-14 xl:w-[84px] md:p-3.5 xl:p-5 bg-purple-1 p-[7.62px] rounded-lg shrink-0;
 						svg {
@@ -105,11 +105,11 @@
 						}
 					}
 					button {
-						@apply text-white bg-purple-1 inline-block w-full rounded-lg text-sm py-[27px] font-medium xl:text-xl;
+						@apply text-white bg-purple-1 inline-block w-full rounded-lg text-sm py-[27px] sm:text-lg sm:leading-tight font-medium xl:text-xl xl:leading-tight;
 					}
 				}
 				.contact-info {
-					@apply text-xs md:text-sm xl:text-base font-light text-center w-3/4 mx-auto mb-10 lg:mb-0;
+					@apply text-xs md:text-sm xl:text-base font-light text-center w-3/4 sm:w-auto md:w-3/4 mx-auto mb-10 lg:mb-0;
 					&__email-link {
 						@apply font-medium;
 					}

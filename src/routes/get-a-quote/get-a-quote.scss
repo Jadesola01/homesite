@@ -1,15 +1,15 @@
 .gaq-page {
 	&__responsive-wrapper {
-		@apply pt-8 lg:pt-32 lg:pb-[152px] pb-[72px] lg:flex justify-center gap-[85px];
+		@apply pt-8 lg:pt-32 lg:pb-[152px] pb-[72px] sm:flex justify-center sm:gap-12 lg:gap-[85px];
 		.landing__image-container {
 			&:first-of-type {
-				@apply hidden lg:block w-[43.35938%] shrink-0;
+				@apply hidden sm:block w-[43.35938%] shrink-0;
 				div {
 					@apply pb-[calc((876/555)*100%)];
 				}
 			}
 			&:last-of-type {
-				@apply mx-[37px] lg:hidden;
+				@apply mx-[37px] sm:hidden;
 				div {
 					@apply pb-[calc((454/288)*100%)];
 				}
@@ -26,7 +26,7 @@
 		}
 		.landing__content {
 			.text-container {
-				@apply text-center mb-8 max-w-xs mx-auto lg:mx-0 lg:text-left lg:max-w-lg;
+				@apply text-center mb-8 max-w-xs mx-auto sm:mx-0 sm:text-left sm:max-w-lg;
 				h1 {
 					@apply font-medium text-xl md:text-[30px] xl:text-[40px] xl:leading-tight text-gray-2 leading-tight mb-6 xl:mb-[9px];
 				}
@@ -35,9 +35,9 @@
 				}
 			}
 			.gaq-page__form {
-				@apply text-[10px] md:text-[15px] xl:text-xl xl:leading-none text-gray-6 text-center pt-8 lg:pt-0 mx-[32.5px] lg:mx-0 flex flex-col items-stretch gap-4 xl:gap-6;
+				@apply text-[10px] md:text-[15px] xl:text-xl xl:leading-none text-gray-6 text-center pt-8 lg:pt-0 mx-[32.5px] sm:mx-0 flex flex-col items-stretch gap-4 xl:gap-6;
 				&-group {
-					@apply grid gap-6 md:grid-cols-2;
+					@apply grid gap-6 sm:grid-cols-2;
 				}
 				input,
 				textarea {
