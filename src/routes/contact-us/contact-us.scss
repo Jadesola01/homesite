@@ -25,7 +25,7 @@
 		& > div:first-child {
 			@apply pt-8 pb-6 lg:py-0 lg:ml-[39px] lg:mt-[88px] lg:mb-[120px] sm:w-5/12 lg:w-[27.7343758%];
 			.section__header {
-				@apply text-center sm:text-left lg:mr-12 mb-6 lg:mb-14 sm:w-4/5;
+				@apply text-center sm:text-left lg:mr-12 mb-6 lg:mb-14 sm:w-4/5 xl:w-auto;
 				h2 {
 					@apply text-2xl leading-tight text-gray-2 font-medium xl:text-[44px] lg:leading-tight mb-1 lg:mb-[9px];
 				}
@@ -39,7 +39,7 @@
 					.step-indicator {
 						@apply w-[18px] md:w-6 xl:w-[30px];
 						i {
-							@apply block w-px h-[72.5px] md:h-24 xl:h-[118.5px] mx-auto bg-[#B8B0F2];
+							@apply block w-px h-[72.5px] md:h-28 xl:h-[108px] mx-auto bg-[#B8B0F2];
 						}
 						&:last-of-type {
 							i {
@@ -65,7 +65,7 @@
 			@apply relative pt-8 lg:pt-0 pb-6 lg:mb-[42.5px] bg-white shrink-0 sm:w-1/2 md:w-7/12 xl:w-[54.6875%];
 			.form-wrapper__content {
 				&__header {
-					@apply sm:absolute sm:-translate-y-full flex gap-3 items-center lg:px-8 py-6 lg:py-[18px] px-4 bg-white-1 rounded-lg mx-3 sm:mx-0 lg:gap-6;
+					@apply top-0 left-0 sm:absolute sm:-translate-y-full flex gap-3 items-center lg:px-8 py-6 lg:py-[18px] px-4 bg-white-1 rounded-lg mx-3 sm:mx-0 lg:gap-6;
 					.icon-wrapper {
 						@apply w-8 md:w-14 xl:w-[84px] md:p-3.5 xl:p-5 bg-purple-1 p-[7.62px] rounded-lg shrink-0;
 						svg {
