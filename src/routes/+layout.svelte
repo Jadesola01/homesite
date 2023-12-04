@@ -12,34 +12,32 @@
 </script>
 
 <header class="header">
-	<div class="header__container">
-		<a href="/" title="Go to home page" class="header__logo">
-			<THDCTechLogo />
-		</a>
-		<label class="menu-toggle" for="menuToggle">
-			<input
-				type="checkbox"
-				id="menuToggle"
-				bind:checked={menuVisible}
-				title={menuVisible ? 'Hide mobile nav' : 'Show mobile nav'}
-			/>
-			<svelte:component this={menuVisible ? IconX : IconMenu2} />
-		</label>
-		<nav aria-hidden={!menuVisible} class="header__container__nav">
-			{#each routes as { route, label }}
-				<NavLink
-					to={route}
-					cn="nav-link"
-					active={$page.url.pathname.split(/\//gu)[1] === route.split(/\//gu)[1]}
-				>
-					<span class="header__nav-label">{label}</span>
-				</NavLink>
-			{/each}
-		</nav>
-		<a href="/get-a-quote" class="header__container__quote-link">
-			<span>Get A Quote</span>
-		</a>
-	</div>
+	<a href="/" title="Go to home page" class="header__logo">
+		<THDCTechLogo />
+	</a>
+	<label class="menu-toggle" for="menuToggle">
+		<input
+			type="checkbox"
+			id="menuToggle"
+			bind:checked={menuVisible}
+			title={menuVisible ? 'Hide mobile nav' : 'Show mobile nav'}
+		/>
+		<svelte:component this={menuVisible ? IconX : IconMenu2} />
+	</label>
+	<nav aria-hidden={!menuVisible} class="header__nav">
+		{#each routes as { route, label }}
+			<NavLink
+				to={route}
+				cn="nav-link"
+				active={$page.url.pathname.split(/\//gu)[1] === route.split(/\//gu)[1]}
+			>
+				<span class="header__nav-label">{label}</span>
+			</NavLink>
+		{/each}
+	</nav>
+	<a href="/contact-us" class="header__quote-link">
+		<span>Contact Us</span>
+	</a>
 </header>
 
 <main class="main">
@@ -64,9 +62,7 @@
 		</div>
 		<hr class="footer__container__separator" />
 		<div class="footer__links">
-			<a href="/t&s" class="footer__link">Terms and Service</a>|<a href="/pp" class="footer__link"
-				>Privacy Policy</a
-			>
+			<a href="/" class="footer__link">Terms and Service&nbsp;|&nbsp;Privacy Policy</a>
 		</div>
 	</div>
 </footer>

@@ -1,6 +1,10 @@
 <script lang="ts">
-	import { IconChevronLeft, IconChevronRight, IconCircleArrowRight } from '@tabler/icons-svelte';
-	import { DigitalOcean, Shopify } from 'src/lib/assets/vectors';
+	import {
+		DigitalOceanLogo,
+		IconChevronRight,
+		IconCircleArrowRight,
+		ShopifyLogo
+	} from '$lib/assets/vectors';
 	import AboutUsContents from './about-us.content';
 	import './about-us.scss';
 
@@ -72,12 +76,14 @@
 					<p>Just some of the leading brands that trust THDC Technologies</p>
 					<div class="tab-pane__slider">
 						<button type="button" title="Show previous clients">
-							<IconChevronLeft />
+							<div>
+								<IconChevronRight />
+							</div>
 						</button>
 						<div class="tab-clients">
 							<div>
-								{#each [Shopify, DigitalOcean, Shopify, DigitalOcean] as client}
-									<svelte:component this={client} />
+								{#each [ShopifyLogo, DigitalOceanLogo, ShopifyLogo, DigitalOceanLogo] as clientLogo}
+									<svelte:component this={clientLogo} />
 								{/each}
 							</div>
 						</div>
@@ -90,12 +96,14 @@
 					<h3>Our Trusted Partners</h3>
 					<div class="tab-pane__slider">
 						<button type="button" title="Show previous partners">
-							<IconChevronLeft />
+							<div>
+								<IconChevronRight />
+							</div>
 						</button>
 						<div class="tab-partners">
 							<div>
-								{#each [Shopify, DigitalOcean, Shopify, DigitalOcean] as partner}
-									<svelte:component this={partner} />
+								{#each [ShopifyLogo, DigitalOceanLogo, ShopifyLogo, DigitalOceanLogo] as partnerLogo}
+									<svelte:component this={partnerLogo} />
 								{/each}
 							</div>
 						</div>
