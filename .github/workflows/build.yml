@@ -3,7 +3,7 @@ name: Deploy Node.js App to Droplet
 on:
   push:
     branches:
-      - main
+      - devops
 
 jobs:
   deploy:
