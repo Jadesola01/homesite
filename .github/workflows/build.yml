@@ -40,7 +40,7 @@ jobs:
           port: ${{ secrets.DROPLET_SSH_PORT }}
           script: |
             # Clone GitHub repository
-            git clone https://github.com/thdctech/home-site.git /var/www/staging.thdctech.com
+            git clone https://github.com/thdctech/home-site.git /var/www/staging.thdctech.com/home-site
 
       - name: Install PM2 on Droplet 
         uses: appleboy/ssh-action@master
@@ -62,7 +62,7 @@ jobs:
           port: ${{ secrets.DROPLET_SSH_PORT }}
           script: |
             # Start your Node.js app with PM2
-            cd /var/www/staging.thdctech.com
+            cd /var/www/staging.thdctech.com/home-site
             pm2 start your-app.js
 
       
