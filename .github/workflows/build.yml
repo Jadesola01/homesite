@@ -21,6 +21,10 @@ jobs:
           key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
           port: ${{ secrets.DROPLET_SSH_PORT }}
           script: |
+            # Install Git
+            apt-get update
+            apt-get install -y git
+            
             # Install NVM
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
             export NVM_DIR="$HOME/.nvm"
