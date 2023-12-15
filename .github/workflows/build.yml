@@ -25,7 +25,7 @@ jobs:
         run: |
           mkdir /var/www/staging.thdctech.com/home-site
           cd /var/www/staging.thdctech.com/home-site
-          git clone https://github.com/thdctech/home-site.git
+          git clone git@github.com:thdctech/home-site.git
           echo 'Deployment successful to DO'
 
          
