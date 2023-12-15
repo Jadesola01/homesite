@@ -1,19 +1,24 @@
 name: Build and Deploy app
-on: 
+
+on:
   push:
     branches:
       - devops 
 
-jobs: 
-  deploy: 
+jobs:
+  deploy:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Deploy Nodejs app
         uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
+
+      - name: Create Directories
+        run: |
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "mkdir -p /var/www/staging.thdctech.com/home-site"
 
       - name: Clone GitHub Repository
         uses: actions/checkout@v2
@@ -23,10 +28,10 @@ jobs:
 
       - name: Setup Project
         run: |
-          mkdir /var/www/staging.thdctech.com/home-site
           cd /var/www/staging.thdctech.com/home-site
           git clone git@github.com:thdctech/home-site.git
           echo 'Deployment successful to DO'
+
 
          
            
