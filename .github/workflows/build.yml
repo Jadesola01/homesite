@@ -1,77 +1,22 @@
-name: Deploy Node.js App to Droplet
-
-on:
+name: Build and Deploy app
+on: 
   push:
     branches:
-      - devops
+      - devops 
 
-jobs:
-  deploy:
+jobs: 
+  deploy: 
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Install Node.js with NVM on Droplet
-        uses: appleboy/ssh-action@master
+    steps: 
+      - name: Deploy Nodejs app
+        uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            # Install Git
-            apt-get update
-            apt-get install -y git
-
-            # Install NVM
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-            
-            # Install Node.js
-            nvm install 16
-            nvm use 16
-
-      - name: Clone GitHub Repository
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
+
           script: |
-            # Clone GitHub repository
-            git clone git@github.com:thdctech/home-site.git /var/www/staging.thdctech.com/home-site
-
-      - name: Install PM2 on Droplet 
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            # Install PM2
-            npm install -g pm2
-
-      - name: Start PM2 on Droplet
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            # Start your Node.js app with PM2
-            cd /var/www/staging.thdctech.com/home-site
-            pm2 start your-app.js
-
-      
-      
-
-      
-      
-
+            mkdir homesite
+            cd homesite
+            git clone git@github.com:thdctech/home-site.git
+            echo 'Deployment successful to DO'
