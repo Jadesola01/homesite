@@ -15,8 +15,18 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
 
-          script: |
-            mkdir /var/www/staging.thdctech.com/home-site
-            cd /var/www/staging.thdctech.com/home-site
-            git clone https://github.com/thdctech/home-site.git
-            echo 'Deployment successful to DO'
+      - name: Clone GitHub Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: 'recursive'
+
+      - name: Setup Project
+        run: |
+          mkdir /var/www/staging.thdctech.com/home-site
+          cd /var/www/staging.thdctech.com/home-site
+          git clone https://github.com/thdctech/home-site.git
+          echo 'Deployment successful to DO'
+
+         
+           
