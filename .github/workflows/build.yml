@@ -1,36 +1,47 @@
-name: Build and Deploy app
+name: Deploy sveltekit
 
 on:
   push:
-    branches:
-      - devops 
+    branches: 
+      - devops
+  
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [14.x]  
+
     steps:
-      - name: Deploy Nodejs app
-        uses: appleboy/ssh-action@v0.1.2
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_KEY }}
-          username: ${{ secrets.SSH_USERNAME }}
+    - uses: actions/checkout@v3
 
-      - name: Create Directories
-        run: |
-          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "mkdir -p /var/www/staging.thdctech.com/home-site"
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
 
-      - name: Clone GitHub Repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          submodules: 'recursive'
+    - run: cd /var/www/staging.thdctech.com/home-site/_work/home-site/home-site
+    - run: npm install
+    - run: npm run build
 
-      - name: Setup Project
-        run: |
-          cd /var/www/staging.thdctech.com/home-site
-          git clone git@github.com:thdctech/home-site.git
-          echo 'Deployment successful to DO'
+    - name: Copy build output to deployment directory
+      run: cp -r /var/www/staging.thdctech.com/home-site/_work/home-site/home-site/build /var/www/staging.thdctech.com/home-site
+
+    # Install PM2 globally
+    - name: Install PM2
+      run: npm install -g pm2
+
+    # Start or restart the SvelteKit application using PM2
+    - name: Start or Restart SvelteKit with PM2
+      run: pm2 restart 0
+
+    # Restart Nginx
+
+    - name: Restart Nginx
+      run: sudo service nginx restart
+
 
 
          
