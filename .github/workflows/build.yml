@@ -22,12 +22,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - run: cd /var/www/staging.thdctech.com/home-site/_work/home-site/home-site
+    - run: cd /var/www/staging.thdctech.com/actions-runner/_work/home-site/home-site
     - run: npm install
     - run: npm run build
 
     - name: Copy build output to deployment directory
-      run: cp -r /var/www/staging.thdctech.com/home-site/_work/home-site/home-site/build /var/www/staging.thdctech.com/home-site
+      run: cp -r /var/www/staging.thdctech.com/actions-runner/_work/home-site/home-site/build /var/www/staging.thdctech.com/home-site
 
     # Install PM2 globally
     - name: Install PM2
