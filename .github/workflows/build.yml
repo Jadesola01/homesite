@@ -29,6 +29,12 @@ jobs:
     - name: Copy build output to deployment directory
       run: cp -r /var/www/staging.thdctech.com/actions-runner/_work/home-site/home-site/build /var/www/staging.thdctech.com/home-site
 
+    - name: Clean install dependencies and build
+      run: |
+          npm ci
+          npm run build
+      working-directory: /var/www/staging.thdctech.com/home-site
+
     # Install PM2 globally
     - name: Install PM2
       run: npm install -g pm2
