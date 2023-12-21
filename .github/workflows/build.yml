@@ -7,20 +7,19 @@ on:
 jobs: 
   deploy:
     runs-on: ubuntu-latest
-    steps: 
-      - name: Deploy on digital ocean 
-        uses: appleboy/ssh-action@v.0.1.2
-        with: 
+    steps:
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.0
+        with:
           host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
-   
-
-        script: |
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
             cd /var/www/staging.thdctech.com
-            git clone git@github.com:thdctech/home-site.git
+            sudo git clone git@github.com:thdctech/home-site.git
             echo 'Deployment successful'
-         
+      
 
          
     
