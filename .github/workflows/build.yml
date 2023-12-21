@@ -1,52 +1,51 @@
-name: Deploy sveltekit
+
+name: sveltekit deployment
 
 on:
   push:
-    branches: 
+    branches:
       - devops
-  
 
 jobs:
-  build:
-    runs-on: self-hosted
+  test:
+
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18.x]  
+        node-version: [8.x, 10.x, 12.x]
 
     steps:
-    - uses: actions/checkout@v3
-
+    - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-
-    - run: cd /var/www/staging.thdctech.com/actions-runner/_work/home-site/home-site
-    - run: npm install
-    - run: npm run build
-
-    - name: Copy build output to deployment directory
-      run: cp -r /var/www/staging.thdctech.com/actions-runner/_work/home-site/home-site/build /var/www/staging.thdctech.com/home-site
-
-    - name: Clean install dependencies and build
+    - name: npm install, test, and build
       run: |
-          npm ci
-          npm run build
-      working-directory: /var/www/staging.thdctech.com/home-site
+        npm install
+        npm test
+        npm run build
+      env:
+        CI: true
 
-    # Install PM2 globally
-    - name: Install PM2
-      run: npm install -g pm2
+  deploy:
+    needs: [test]
+    runs-on: ubuntu-latest
 
-    # Start or restart the SvelteKit application using PM2
-    - name: Start or Restart SvelteKit with PM2
-      run: pm2 restart 0
-
-    # Restart Nginx
-
-    - name: Restart Nginx
-      run: sudo service nginx restart
+    steps:
+    - name: SSH and deploy node app
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd ~/var/www/staging.thdctech.com/home-site
+          git pull origin master
+          npm install 
+          pm2 restart node-app
 
 
 
