@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "${{ secrets.SUDO_PASSWORD }} | 
           sudo -S cd /var/www/staging.thdctech.com"
-          sudo git clone git@github.com:thdctech/home-site.git
+          sudo -S git clone git@github.com:thdctech/home-site.git
         env: 
           SUDO_PASSWORD: ${{ secrets.SUDO_PASSWORD}}
           
