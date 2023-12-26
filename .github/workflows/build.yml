@@ -15,13 +15,11 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-      - name: Run a command with sudo 
-        run: |
-          echo "${{ secrets.SUDO_PASSWORD }} | 
-          sudo -S cd /var/www/staging.thdctech.com"
-          sudo -S git clone git@github.com:thdctech/home-site.git
-        env: 
-          SUDO_PASSWORD: ${{ secrets.SUDO_PASSWORD}}
+          script: |
+            echo "${{ secrets.SUDO_PASSWORD }} | 
+            cd /var/www/staging.thdctech.com"
+            git clone git@github.com:thdctech/home-site.git
+        
           
       
 
