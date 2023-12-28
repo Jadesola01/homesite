@@ -1,25 +1,24 @@
-name: Deploy and Build 
+name: Build and Deploy
 on: 
-  push:
+  push: 
     branches:
       - devops 
-
 jobs: 
-  deploy:
+  deploy: 
     runs-on: ubuntu-latest
-    steps:
-      - name: executing remote ssh commands using ssh key 
-        uses: appleboy/ssh-action@v1.0.0
-        with:
+    steps: 
+      - name: Deploy Node.js app
+        uses: appleboy/ssh-action@v0.1.2
+        with: 
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+
           script: |
-            echo "${{ secrets.SUDO_PASSWORD }} | 
-            cd /var/www/staging.thdctech.com"
+            mkdir homesite
+            cd homesite
             git clone git@github.com:thdctech/home-site.git
-        
+            echo 'Deployment successful to digital ocean'
           
       
 
